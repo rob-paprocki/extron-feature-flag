@@ -81,7 +81,7 @@ app's install folder as the reference. Output lands in `dist/<AppKey>/`.
 ## Revert
 
 ```sh
-rm /path/to/Extron/{GCP,GUI Designer,Toolbelt}/Extron.Features.Factory.dll
+rm /path/to/Extron/{GCP,"GUI Designer",Toolbelt}/Extron.Features.Factory.dll
 ```
 
 ## Notes
