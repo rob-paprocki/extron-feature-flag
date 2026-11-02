@@ -38,7 +38,22 @@ per app produces three semantically identical DLLs. They are
 interchangeable; the per-app `dist/` folders exist only so you can tell
 which install produced each one.
 
+## Requirements
+
+- GCP, GUI Designer or Toolbelt at the Contracts version in the table above.
+- A POSIX shell for the scripts, such as Git Bash on Windows. Or skip the
+  script and copy each `dist/<App>/Extron.Features.Factory.dll` into that
+  app's install folder by hand.
+- To rebuild the DLLs, which is optional: a .NET SDK 6.0 or later, and each
+  app's own `Extron.Features.Contracts.dll` and `Extron.Features.dll`.
+
+There is nothing to configure. The scripts' only argument is the folder that
+holds the `GCP`, `GUI Designer` and `Toolbelt` app folders.
+
 ## Install
+
+Exit each app fully first. It reads the Factory once, on the first feature
+flag it checks, so a running app will not see the DLL.
 
 ```sh
 sh scripts/install.sh                            # defaults to ~/Desktop/Extron
@@ -46,7 +61,10 @@ sh scripts/install.sh /path/to/Extron/root       # explicit root
 ```
 
 The script copies the prebuilt Factory DLL into each app folder it finds
-under the given root.
+under the given root. On Windows the apps are usually under
+`C:\Program Files (x86)\Extron\`, which needs an elevated shell to write to.
+A DLL that arrived over SMB or a browser download must be unblocked first
+(see [Notes](#notes)).
 
 ## Build (optional, DLLs are prebuilt in `dist/`)
 
@@ -75,8 +93,8 @@ install, unblock it (right-click, Properties, Unblock) or
 not appear.
 
 Composition is one-shot: `FeaturesProvider._didCompose` latches true in
-a `finally` block on first flag access. Exit the app fully before
-installing the DLL.
+a `finally` block on first flag access, which is why the app has to be
+closed during the install.
 
 A stale `features.json` under
 `%PUBLIC%\Documents\Extron\Features\<App>\<version>\` can suppress the
