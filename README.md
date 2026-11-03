@@ -93,8 +93,7 @@ install, unblock it (right-click, Properties, Unblock) or
 not appear.
 
 Composition is one-shot: `FeaturesProvider._didCompose` latches true in
-a `finally` block on first flag access, which is why the app has to be
-closed during the install.
+a `finally` block on first flag access.
 
 A stale `features.json` under
 `%PUBLIC%\Documents\Extron\Features\<App>\<version>\` can suppress the
