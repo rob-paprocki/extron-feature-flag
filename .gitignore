@@ -1,0 +1,10 @@
+*.o
+*.obj
+*.pdb
+/build/
+/obj/
+/bin/
+__pycache__/
+*.pyc
+.claude/
+wordlist.local

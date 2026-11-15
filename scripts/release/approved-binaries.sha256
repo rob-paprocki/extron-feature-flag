@@ -1,0 +1,6 @@
+# Prebuilt DLLs that may be published, each one looked at by a person (embedded strings
+# checked for user paths and emails). "<sha256>  <path>", pinned to the exact bytes reviewed.
+# A rebuilt DLL is refused until someone looks again and re-pins it.
+2cc01d34d15abc2080213d1b6635f75f9367d0545302e6ff2298cf392f3ff699  dist/GCP/Extron.Features.Factory.dll
+eec3cc3a228eed938fbb99afd74c4d1d1f416ad5fee9ddffdcfc47591e57f0e0  dist/GUIDesigner/Extron.Features.Factory.dll
+f04df3a158267d032918257839b8520e8ab07de95291d025343e3f636cd7f00b  dist/Toolbelt/Extron.Features.Factory.dll
